@@ -1,25 +1,35 @@
 // create random choice for computer 
-function getComputerChoice (selection){
-    let choiceArray = ["Rock", "Paper", "Scissors"]
-    return choiceArray[Math.floor(Math.random()*choiceArray.length)]
+function getComputerChoice (){
+    let choices = ["rock", "paper", "scissors"]
+    return choices[Math.floor(Math.random()*choices.length)]
+    
 }
-// name computerSelection as random choice function
-const computerSelection = getComputerChoice();
-const playerSelection = "rock";
+
+const computerSelection = getComputerChoice()
 
 function playRound(playerSelection, computerSelection){
-    if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-        return "You have tied!"
-        //if playerSelection is Rock and computerSelection is Scissors, player wins
-    } else if (playerSelection == "ROCK" && computerSelection != "SCISSORS"){
-        return "You lose! Paper beats Rock."
-    } else { 
-        return "You lost! Rock beats Scissors."
-    }
-    }
+  if  ((playerSelection == "rock" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "rock")){
+        
+        result = (`You win! ${playerSelection} beats ${computerSelection}.`)
+        } 
+    
+    else if (playerSelection === computerSelection){
+        result = (`You tie! You both selected ${playerSelection}.`)
+        } 
+   
+    else {
+        result = (`You lose!  ${computerSelection} beats ${playerSelection}.`)
+        } 
+    
+return result 
+
+}
 
 
-
+let playerSelection = "paper"
 console.log(playRound(playerSelection, computerSelection))
 
-console.log(getComputerChoice())
+
+
