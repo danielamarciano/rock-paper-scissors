@@ -5,8 +5,6 @@ function getComputerChoice (){
     
 }
 
-
-
 function playRound(playerSelection, computerSelection){
   if  ((playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "paper") ||
@@ -51,6 +49,11 @@ function game(){
 }
 
 let playerSelection = "paper"
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+    button.addEventListener('click', game);
+  });
 
 
 console.log(game())
