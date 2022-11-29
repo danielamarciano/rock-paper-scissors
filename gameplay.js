@@ -1,3 +1,5 @@
+const buttons = document.querySelectorAll(".button")
+
 // create random choice for computer 
 function getComputerChoice (){
     let choices = ["rock", "paper", "scissors"]
@@ -50,13 +52,11 @@ function game(){
 
 let playerSelection = "paper"
 
-const buttons = document.querySelectorAll('button');
+
 buttons.forEach((button) => {
-    button.addEventListener('click', game);
+    button.addEventListener('click', (e) => {
+        console.log(e)
+    })
   });
 
-
 console.log(game())
-
-
-
