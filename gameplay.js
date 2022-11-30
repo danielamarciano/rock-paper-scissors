@@ -1,14 +1,14 @@
 
 const choices = ['rock', 'paper', 'scissors']
 const buttons = document.querySelectorAll('button')
-const displayContainer = document.createElement('div')
+const div = document.querySelector('div')
+
 
 
 
 // Create function to select random choice for computer
 function getComputerChoice (){
     return choices[Math.floor(Math.random()*choices.length)]
-    
 }
 
 // Create function to play rounds and display round text
@@ -62,7 +62,9 @@ buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
          playerSelection = button.id;
          computerSelection = getComputerChoice()
-       console.log(playRound(playerSelection, computerSelection))
+         const container = document.querySelector('.container')
+         container.textContent = playRound(playerSelection, computerSelection) 
+       
   })});
 
 
