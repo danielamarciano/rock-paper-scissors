@@ -1,22 +1,21 @@
 
-const choices = ["rock", "paper", "scissors"]
-const resultField = document.getElementById("result")
-const buttons = document.querySelectorAll("button")
-const div = document.createElement("div")
-const playerScore = document.getElementById("playerScore")
-const computerScore = document.getElementById("computerScore")
+const choices = ['rock', 'paper', 'scissors']
+const buttons = document.querySelectorAll('button')
+const displayContainer = document.createElement('div')
 
 
 
+
+// Create function to select random choice for computer
 function getComputerChoice (){
     return choices[Math.floor(Math.random()*choices.length)]
     
 }
 
 function playRound(playerSelection, computerSelection){
-  if  ((playerSelection == "rock" && computerSelection == "scissors") ||
-        (playerSelection == "scissors" && computerSelection == "paper") ||
-        (playerSelection == "paper" && computerSelection == "rock")){
+  if  ((playerSelection == "rock" && computerSelection == 'scissors') ||
+        (playerSelection == "scissors" && computerSelection == 'paper') ||
+        (playerSelection == "paper" && computerSelection == 'rock')){
         
         result = (`You win! ${playerSelection} beats ${computerSelection}.`)
         } 
@@ -39,7 +38,7 @@ function game(){
     let computerScore = 0
     for (let i=0; i < 5; i++){
         let computerSelection = getComputerChoice()
-        let playerSelection = "rock"
+        let playerSelection = 'rock'
         let result = playRound(playerSelection, computerSelection)
         console.log(result)
         if (result == (`You win! ${playerSelection} beats ${computerSelection}.`)){
@@ -50,13 +49,13 @@ function game(){
     } 
 
     if (playerScore > computerScore){
-        return "You win! Go have a cookie."
+        return 'You win! Go have a cookie.'
     }else {
         return (`You lose. Better luck next time, pal.`)
     }
 }
 
-let playerSelection = "paper"
+let playerSelection = 'paper'
 
 
 buttons.forEach((button) => {
