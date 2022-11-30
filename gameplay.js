@@ -1,8 +1,14 @@
-const buttons = document.querySelectorAll(".button")
 
-// create random choice for computer 
+const choices = ["rock", "paper", "scissors"]
+const resultField = document.getElementById("result")
+const buttons = document.querySelectorAll("button")
+const div = document.createElement("div")
+const playerScore = document.getElementById("playerScore")
+const computerScore = document.getElementById("computerScore")
+
+
+
 function getComputerChoice (){
-    let choices = ["rock", "paper", "scissors"]
     return choices[Math.floor(Math.random()*choices.length)]
     
 }
@@ -24,7 +30,7 @@ function playRound(playerSelection, computerSelection){
         result = (`You lose!  ${computerSelection} beats ${playerSelection}.`)
         } 
     
-return result 
+return result
 
 }
 
@@ -55,8 +61,10 @@ let playerSelection = "paper"
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        console.log(e)
-    })
-  });
+         playerSelection = button.id;
+         computerSelection = getComputerChoice()
+       console.log(playRound(playerSelection, computerSelection))
+  })});
 
-console.log(game())
+
+ // call playround func with corect player selection when button is clicked 
