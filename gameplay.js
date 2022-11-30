@@ -5,13 +5,13 @@ const displayContainer = document.createElement('div')
 
 
 
-
 // Create function to select random choice for computer
 function getComputerChoice (){
     return choices[Math.floor(Math.random()*choices.length)]
     
 }
 
+// Create function to play rounds and display round text
 function playRound(playerSelection, computerSelection){
   if  ((playerSelection == "rock" && computerSelection == 'scissors') ||
         (playerSelection == "scissors" && computerSelection == 'paper') ||
@@ -20,7 +20,6 @@ function playRound(playerSelection, computerSelection){
         result = (`You win! ${playerSelection} beats ${computerSelection}.`)
         } 
 
-    
     else if (playerSelection === computerSelection){
         result = (`You tie! You both selected ${playerSelection}.`)
         } 
@@ -33,6 +32,7 @@ return result
 
 }
 
+// Create function to count score and determine winner
 function game(){
     let playerScore = 0 
     let computerScore = 0
@@ -47,7 +47,6 @@ function game(){
             computerScore += 1
         }
     } 
-
     if (playerScore > computerScore){
         return 'You win! Go have a cookie.'
     }else {
@@ -58,6 +57,7 @@ function game(){
 let playerSelection = 'paper'
 
 
+// Create listener event on button to playRound when button is pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
          playerSelection = button.id;
@@ -66,4 +66,3 @@ buttons.forEach((button) => {
   })});
 
 
- // call playround func with corect player selection when button is clicked 
