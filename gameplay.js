@@ -34,7 +34,6 @@ return result
 
 }
 
-
 function scoreboard(){
    playRound(playerSelection,computerSelection);
    if (playerScore>computerScore){
