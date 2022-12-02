@@ -10,6 +10,12 @@ function getComputerChoice() {
     return choices[Math.floor(Math.random() * choices.length)]
 }
 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  
 let playerScore = 0
 let computerScore = 0
 // Create function to play rounds and display round text
@@ -18,8 +24,10 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == "scissors" && computerSelection == 'paper') ||
         (playerSelection == "paper" && computerSelection == 'rock')) {
 
+        playerSelection = capitalizeFirstLetter(playerSelection)
         result = (`You win! ${playerSelection} beats ${computerSelection}.`);
         playerScore += 1
+
     }
 
     else if (playerSelection === computerSelection) {
@@ -27,6 +35,8 @@ function playRound(playerSelection, computerSelection) {
     }
 
     else {
+
+        computerSelection = capitalizeFirstLetter(computerSelection)
         result = (`You lose!  ${computerSelection} beats ${playerSelection}.`);
         computerScore += 1
     }
@@ -37,10 +47,10 @@ function playRound(playerSelection, computerSelection) {
 
 function scoreboard() {
     if (playerScore > computerScore) {
-        return ("Player Won!");
+        return ("Player Won!")
     }
     if (computerScore > playerScore) {
-        return ("Computer Won, darn!");
+        return ("Computer Won, darn!")
 
     }
 }
