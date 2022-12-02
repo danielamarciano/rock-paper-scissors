@@ -2,71 +2,93 @@
 const choices = ['rock', 'paper', 'scissors']
 const buttons = document.querySelectorAll('button')
 const div = document.querySelector('div')
+const winner = document.querySelector('.winner')
 
 
 // Create function to select random choice for computer
-function getComputerChoice (){
-    return choices[Math.floor(Math.random()*choices.length)]
+function getComputerChoice() {
+    return choices[Math.floor(Math.random() * choices.length)]
 }
 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  
 let playerScore = 0
 let computerScore = 0
 // Create function to play rounds and display round text
-function playRound(playerSelection, computerSelection){
-  if  ((playerSelection == "rock" && computerSelection == 'scissors') ||
+function playRound(playerSelection, computerSelection) {
+    if ((playerSelection == "rock" && computerSelection == 'scissors') ||
         (playerSelection == "scissors" && computerSelection == 'paper') ||
-        (playerSelection == "paper" && computerSelection == 'rock')){
-        
+        (playerSelection == "paper" && computerSelection == 'rock')) {
+
+        playerSelection = capitalizeFirstLetter(playerSelection)
         result = (`You win! ${playerSelection} beats ${computerSelection}.`);
         playerScore += 1
-        } 
 
-    else if (playerSelection === computerSelection){
+    }
+
+    else if (playerSelection === computerSelection) {
         result = (`You tie! You both selected ${playerSelection}.`)
-        } 
-   
+    }
+
     else {
+
+        computerSelection = capitalizeFirstLetter(computerSelection)
         result = (`You lose!  ${computerSelection} beats ${playerSelection}.`);
         computerScore += 1
-        } 
-    
-return result
+    }
+
+    return result
 
 }
 
-function scoreboard(){
-   playRound(playerSelection,computerSelection);
-   if (playerScore>computerScore){
-   console.log("Player Won");
+function scoreboard() {
+    if (playerScore > computerScore) {
+        return ("Player Won!")
     }
-   if (computerScore>playerScore) {
-   console.log("Computer Won");
-    }
-  }
+    if (computerScore > playerScore) {
+        return ("Computer Won, darn!")
 
-function game(){
-    for (let i=0; i < 4; i++){
+    }
+}
+
+function game() {
+    if (playerScore == 5 || computerScore == 5)
         scoreboard()
-} return [playerScore, computerScore]
-
+    return [playerScore, computerScore]
 }
-
 
 
 // Create listener event on button to playRound when button is pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-         playerSelection = button.id;
-         computerSelection = getComputerChoice()
-         const container = document.querySelector('.container')
-         container.textContent = playRound(playerSelection, computerSelection) 
 
-         const score = document.querySelector('.score')
-         score.textContent = game()
+        if (playerScore > 4 || computerScore > 4) {
 
-       
-  })});
+            playerScore = 0
+            computerScore = 0
+            winner.textContent = ''
 
-// Display the running score, and announce a winner of 
-//the game once one player reaches 5 points.
+        }
+        playerSelection = button.id;
+        computerSelection = getComputerChoice()
+        const container = document.querySelector('.container')
+        container.textContent = playRound(playerSelection, computerSelection)
+
+        if (playerScore == 5 || computerScore == 5) {
+            winner.textContent = scoreboard()
+        }
+
+        const score = document.querySelector('.score')
+        score.textContent = game()
+
+
+
+
+    })
+});
+
 
