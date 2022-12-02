@@ -40,6 +40,7 @@ function scoreboard() {
     }
     if (computerScore > playerScore) {
         console.log("Computer Won, darn!");
+
     }
 }
 
@@ -53,6 +54,10 @@ function game() {
 // Create listener event on button to playRound when button is pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
+        if (playerScore > 4 || computerScore > 4) {
+            playerScore = 0
+            computerScore = 0 
+        }
         playerSelection = button.id;
         computerSelection = getComputerChoice()
         const container = document.querySelector('.container')
