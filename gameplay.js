@@ -2,6 +2,7 @@
 const choices = ['rock', 'paper', 'scissors']
 const buttons = document.querySelectorAll('button')
 const div = document.querySelector('div')
+const winner = document.querySelector('.winner')
 
 
 // Create function to select random choice for computer
@@ -36,10 +37,10 @@ function playRound(playerSelection, computerSelection) {
 
 function scoreboard() {
     if (playerScore > computerScore) {
-        console.log("Player Won!");
+        return ("Player Won!");
     }
     if (computerScore > playerScore) {
-        console.log("Computer Won, darn!");
+        return ("Computer Won, darn!");
 
     }
 }
@@ -54,14 +55,22 @@ function game() {
 // Create listener event on button to playRound when button is pressed
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
+
         if (playerScore > 4 || computerScore > 4) {
+
             playerScore = 0
-            computerScore = 0 
+            computerScore = 0
+            winner.textContent = ''
+
         }
         playerSelection = button.id;
         computerSelection = getComputerChoice()
         const container = document.querySelector('.container')
         container.textContent = playRound(playerSelection, computerSelection)
+
+        if (playerScore == 5 || computerScore == 5) {
+            winner.textContent = scoreboard()
+        }
 
         const score = document.querySelector('.score')
         score.textContent = game()
@@ -72,6 +81,3 @@ buttons.forEach((button) => {
     })
 });
 
-
-// after someone gets to 5, winner announced
-// after 5 points reached, next points clears both to 0 0 and add point
